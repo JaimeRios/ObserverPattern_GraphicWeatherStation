@@ -15,6 +15,11 @@ ForecastDisplay::~ForecastDisplay()
     delete ui;
 }
 
+void ForecastDisplay::updateId(int id, int totalIds)
+{
+    ui->labelId->setText(QString("Observer # %1/%2").arg(id).arg(totalIds));
+}
+
 void ForecastDisplay::update(float temperature, float humidity, float pressure)
 {
     this->temperature = temperature;
@@ -35,4 +40,10 @@ void ForecastDisplay::display()
         message= "Watchout for cooler, rainy weather!";
 
     ui->messageLabel->setText(message);
+}
+
+void ForecastDisplay::on_unsubscribeButton_clicked()
+{
+    Observer *current = this;
+    this->weatherData->removeObserver(current);
 }

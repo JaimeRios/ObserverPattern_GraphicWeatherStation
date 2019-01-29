@@ -28,6 +28,11 @@ float HeatIndexDisplay::computeHeatIndex(float t, float rh)
     return index;
 }
 
+void HeatIndexDisplay::updateId(int id, int totalIds)
+{
+    ui->labelId->setText(QString("Observer # %1/%2").arg(id).arg(totalIds));
+}
+
 void HeatIndexDisplay::update(float temperature, float humidity, float pressure)
 {
     heatIndex = computeHeatIndex(temperature, humidity);
@@ -39,4 +44,10 @@ void HeatIndexDisplay::display()
     double value;
     ui->lcdHeatIndexDisplay->display(heatIndex);
     ui->lcdHeatIndexDecimalDisplay->display(modf(heatIndex,&value)*10000);
+}
+
+void HeatIndexDisplay::on_unsubscribeButton_clicked()
+{
+    Observer *current = this;
+    this->weatherData->removeObserver(current);
 }

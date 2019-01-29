@@ -17,8 +17,12 @@ class CurrentConditionsDisplay : public QMainWindow, public Observer, public Dis
 public:
     explicit CurrentConditionsDisplay(Subject * weatherData=nullptr, QWidget *parent = nullptr);
     ~CurrentConditionsDisplay();
+    void updateId(int id, int totalIds);
     void update(float temperature, float humidity, float pressure);
     void display();
+
+private slots:
+    void on_unsubscribeButton_clicked();
 
 private:
     Ui::CurrentConditionsDisplay *ui;

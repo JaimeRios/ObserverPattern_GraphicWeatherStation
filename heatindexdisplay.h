@@ -18,8 +18,12 @@ public:
     explicit HeatIndexDisplay(Subject * weatherData=nullptr, QWidget *parent = nullptr);
     ~HeatIndexDisplay();
     float computeHeatIndex(float t, float rh);
+    void updateId(int id, int totalIds);
     void update(float temperature, float humidity, float pressure);
     void display();
+
+private slots:
+    void on_unsubscribeButton_clicked();
 
 private:
     Ui::HeatIndexDisplay *ui;

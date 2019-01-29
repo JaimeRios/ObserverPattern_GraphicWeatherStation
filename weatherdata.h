@@ -20,6 +20,7 @@ public:
     void registerObserver(Observer *o);
     void removeObserver(Observer *o);
     void notifyObservers();
+    void notifyObserversIds();
     void measurementsChanged();
     void setMeasurements(float temperature, float humidity, float pressure);
 

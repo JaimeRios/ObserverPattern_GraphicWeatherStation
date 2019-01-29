@@ -17,8 +17,12 @@ class StatisticsDisplay : public QMainWindow, public Observer, DisplayElement
 public:
     explicit StatisticsDisplay(Subject * weatherData=nullptr, QWidget *parent = nullptr);
     ~StatisticsDisplay();
+    void updateId(int id, int totalIds);
     void update(float temperature, float humidity, float pressure);
     void display();
+
+private slots:
+    void on_unsubscribeButton_clicked();
 
 private:
     Ui::StatisticsDisplay *ui;

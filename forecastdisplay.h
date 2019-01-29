@@ -17,8 +17,12 @@ class ForecastDisplay : public QMainWindow, public Observer, public DisplayEleme
 public:
     explicit ForecastDisplay(Subject * weatherData=nullptr, QWidget *parent = nullptr);
     ~ForecastDisplay();
+    void updateId(int id, int totalIds);
     void update(float temperature, float humidity, float pressure);
     void display();
+
+private slots:
+    void on_unsubscribeButton_clicked();
 
 private:
     Ui::ForecastDisplay *ui;

@@ -24,13 +24,31 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+    currentconditionsdisplay.cpp \
+    displayelement.cpp \
+    forecastdisplay.cpp \
+    heatindexdisplay.cpp \
+    observer.cpp \
+    statisticsdisplay.cpp \
+    subject.cpp \
+    weatherdata.cpp
 
 HEADERS += \
-        mainwindow.h
+    currentconditionsdisplay.h \
+    displayelement.h \
+    forecastdisplay.h \
+    heatindexdisplay.h \
+    observer.h \
+    statisticsdisplay.h \
+    subject.h \
+    weatherdata.h
 
 FORMS += \
-        mainwindow.ui
+    currentconditionsdisplay.ui \
+    forecastdisplay.ui \
+    heatindexdisplay.ui \
+    statisticsdisplay.ui \
+    weatherdata.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

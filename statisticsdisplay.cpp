@@ -16,6 +16,11 @@ StatisticsDisplay::~StatisticsDisplay()
     delete ui;
 }
 
+void StatisticsDisplay::updateId(int id, int totalIds)
+{
+    ui->labelId->setText(QString("Observer # %1/%2").arg(id).arg(totalIds));
+}
+
 void StatisticsDisplay::update(float temperature, float humidity, float pressure)
 {
     tempSum += temperature;
@@ -39,4 +44,10 @@ void StatisticsDisplay::display()
     ui->lcdMaxDecimalDisplay->display(modf(maxTemp,&value)*100);
     ui->lcdMinDisplay->display(minTemp);
     ui->lcdMinDecimalDisplay->display(modf(minTemp,&value)*100);
+}
+
+void StatisticsDisplay::on_unsubscribeButton_clicked()
+{
+    Observer *current = this;
+    this->weatherData->removeObserver(current);
 }
